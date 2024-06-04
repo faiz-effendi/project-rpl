@@ -92,6 +92,11 @@
         include 'koneksi.php';
         $sql = "SELECT * FROM products WHERE quantity>0";
 
+        if(isset($_GET['search'])){
+          $search = $_GET['search'];
+          $sql = "SELECT * FROM products WHERE quantity>0 AND name LIKE '%$search%'";
+        }
+
         $data = mysqli_query($connect, $sql) or die(mysqli_error($connect));
         while($row = $data->fetch_object()){
       ?>

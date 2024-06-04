@@ -150,11 +150,18 @@
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Masukan harga" name="price">
                 </td>
               </tr>
-
+              
               <tr class="d-flex gap-5 fs-4 mb-3">
                 <td class="w-50 fs-5">Link Gambar:</td>
                 <td class="w-100">
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Link gambar" name="img">
+                </td>
+              </tr>
+              
+              <tr class="d-flex gap-5 fs-4 mb-3" style="width: 70vh;">
+                <td class="w-50 fs-5">Stock product:</td>
+                <td class="w-100">
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Masukan stock" name="quantity">
                 </td>
               </tr>
 

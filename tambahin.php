@@ -5,8 +5,9 @@
   $price = $_POST['price'];
   $img = $_POST['img'];
   $desc = $_POST['desc'];
+  $quantity = $_POST['quantity'];
 
-  $sql = "INSERT INTO products VALUES ('', '$name', '$img', '$price', '$desc')";
+  $sql = "INSERT INTO products VALUES ('', '$name', '$img', '$price', '$quantity', '$desc')";
 
   $data = mysqli_query($connect, $sql) or die(mysqli_error($connect));
 

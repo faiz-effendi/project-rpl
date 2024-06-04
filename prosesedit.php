@@ -4,10 +4,10 @@
   $name = $_POST['name'];
   $price = $_POST['price'];
   $img = $_POST['img'];
-  $category = $_POST['category'];
+  $quantity = $_POST['quantity'];
   $desc = $_POST['desc'];
 
-  $konek= mysqli_query($connect, "UPDATE products SET product_id = '$id_product', name='$name', image='$img', 
+  $konek= mysqli_query($connect, "UPDATE products SET product_id = '$id_product', name='$name', image='$img', quantity='$quantity',  
   price='$price', product_description='$desc' WHERE product_id=$id_product; ") or die (mysqli_error($connect));
 
 if($konek){

@@ -1,6 +1,6 @@
 <?php
-  include 'koneksi.php';
   session_start();
+  include 'koneksi.php';
 
   $username = $_SESSION['username'];
 
@@ -8,18 +8,15 @@
     header("location: login_page.php?pesan=belum_login");
   }
 
-  $id = $_GET['id'];
+  $product_id = $_GET['product_id'];
+  $user_id = $_GET['user_id'];
 
-  $sql = "SELECT * FROM cart WHERE user_id = $id";
+  $sql = "DELETE FROM cart WHERE product_id=$product_id AND user_id=$user_id";
 
   $data = mysqli_query($connect, $sql)or die(mysqli_error($connect));
 
   if($data){
-    while($row = $data->fetch_object()){
-      
-    }
-
-    
+    header("location: keranjang.php?ket=success");
   } else {
     header("location: keranjang.php?ket=gagal");
   }

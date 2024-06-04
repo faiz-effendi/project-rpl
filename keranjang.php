@@ -30,24 +30,25 @@
     if(isset($_GET['ket'])){
       if($_GET['ket'] === 'success'){
         print'<div style="width: 60vh; margin-bottom: 16px; text-align: center; border-radius: 6px; background-color: #C7DCA7;">';
-          print'<h5 class="p-2 m-0" style="font-size: 18px;">Checkout Berhasil!</h5>';
+          print'<h5 class="p-2 m-0" style="font-size: 18px;">Proses Berhasil!</h5>';
           print'</div>';
         } else {
           print'<div style="width: 60vh; margin-bottom: 16px; text-align: center; border-radius: 6px; background-color: #f7dddc;">';
-          print'<h5 class="p-2 m-0" style="font-size: 18px;">Checkout Gagal!</h5>';
+          print'<h5 class="p-2 m-0" style="font-size: 18px;">Proses Gagal!</h5>';
           print'</div>';
         }
       }
     ?>
     <div class="d-flex justify-content-center p-4 flex-column" style="border: 4px solid #D0D4CA; border-radius: 12px; background-color: white;">
       <h1 class="text-center mb-5"><b>Keranjang Anda</b></h1>
-      <table class="table" style="width: 70vh;">
+      <table class="table" style="width: 100vh;">
         <thead>
           <tr>
             <th scope="col">No</th>
             <th scope="col">Nama barang</th>
             <th scope="col">Jumlah</th>
             <th scope="col">Harga</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +61,7 @@
           while($row = $data_user->fetch_object()){
             $id_user = $row->user_id;
           }
-          $sql = "SELECT name, SUM(quantity) as quantity, SUM(total_price) as total_price FROM cart WHERE user_id=$id_user GROUP BY product_id";
+          $sql = "SELECT product_id, name, SUM(quantity) as quantity, SUM(total_price) as total_price FROM cart WHERE user_id=$id_user GROUP BY product_id";
           $data = mysqli_query($connect, $sql)or die(mysqli_error($connect));
           $count=1;
           $total=0;
@@ -71,15 +72,20 @@
             <td><?=$row->name?></td>
             <td><?=$row->quantity?></td>
             <td>Rp<?=$row->total_price?></td>
+            <td>
+              <a href="./hapus_keranjang.php?product_id=<?=$row->product_id?>&user_id=<?php echo $id_user ?>" class="btn btn-danger border-2" id="tombol-login">Hapus</a>
+            </td>
           </tr>
           <?php
-          $total += $row->total_price;
-          }
+            $total += $row->total_price;
+            }
           ?>
           <tr>
             <th scope="row"></th>
             <td><b class="fs-4">TOTAL HARGA</b></td>
+            <td></td>
             <td><b class="fs-4">Rp<?=$total?></b></td>
+            <td></td>
           </tr>
         </tbody>
       </table>

@@ -13,6 +13,10 @@
   $total_price = $price*$quantitybuy;
   $id_product = $_GET['id'];
 
+  if($quantity==0){
+    header("location: details.php?id=".$id_product."&ket=gagal");
+  }
+
   if(empty($_SESSION['username'])){
     header("location: details.php?id=".$id_product."&ket=belum_login");
   } else{
@@ -20,7 +24,7 @@
       $data_user = mysqli_query($connect, $sql_username) or die(mysqli_error($connect));
       while($row = $data_user->fetch_object()){
         $id_user = $row->user_id;
-  }
+      }
       
       $sql_cart = "INSERT INTO cart (user_id, product_id, name, quantity, total_price) VALUES ('$id_user', '$id_product', '$name', '$quantitybuy', '$total_price')";
       $sql_update = "UPDATE products SET quantity=$quantity_final WHERE product_id=$id_product";

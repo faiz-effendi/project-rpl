@@ -164,25 +164,15 @@
                   <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Link gambar" name="img" value="<?php echo $data['image']; ?>">
                 </td>
               </tr>
-              
+
               <tr class="d-flex gap-5 fs-4 mb-3">
-                <td class="w-50 fs-5">Category:</td>
+                <td class="w-50 fs-5">Stock</td>
                 <td class="w-100">
-                  <select class="form-select" aria-label="Default select example" name="category">
-                    <option selected><?php
-                    if ($data['category']==1) {
-                     echo "Parfume";
-                    }
-                    else if ($data['category']==2) {
-                      echo "Skincare";
-                     }
-                    else if ($data['category']==3) {
-                      echo "Makeup";
-                     }
-                    ?></option>
-                  </select>
+                  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Stock barang" name="quantity" value="<?php echo $data['quantity']; ?>">
                 </td>
               </tr>
+              
+             
 
               <tr class="d-flex gap-5 fs-4 mb-3">
                 <td class="w-50 fs-5">Deskripsi:</td>
